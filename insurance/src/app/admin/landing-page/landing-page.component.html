@@ -1,0 +1,37 @@
+<!-- user-landing.component.html -->
+<app-navbar />
+<div id="user-landing">
+
+    <!-- Logo -->
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <img src="path/to/logo.png" alt="Policy Pro" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+    <!-- Main options -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <button class="btn btn-primary w-100" routerLink="/admin/create-policy">Create Policy</button>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <button class="btn btn-primary w-100" routerLink="/admin/view-policy">View All Policy</button>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <button class="btn btn-primary w-100" routerLink="/admin/insurance-requests">View All Insurance
+                            Requests</button>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <button class="btn btn-primary w-100" routerLink="/admin/claim-requests">View All Claim
+                            Requests</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

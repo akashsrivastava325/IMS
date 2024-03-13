@@ -1,0 +1,30 @@
+<!-- email-validation.component.html -->
+
+<form [formGroup]="emailForm" (ngSubmit)="submitForm()">
+    <input type="email" formControlName="email" placeholder="Enter your email">
+    <div *ngIf="emailForm.get('email')?.invalid && emailForm.get('email')?.errors as emailErrors"
+        class="error-messages">
+        <div *ngIf="emailErrors['required']" class="error">Email is required</div>
+        <div *ngIf="emailErrors['email']" class="error">Invalid email format</div>
+    </div>
+
+    <input type="number" formControlName="number" placeholder="Enter a number">
+    <div *ngIf="emailForm.get('number')?.invalid && emailForm.get('number')?.errors as numberErrors"
+        class="error-messages">
+        <div *ngIf="numberErrors['required']" class="error">Number is required</div>
+        <div *ngIf="numberErrors['pattern']" class="error">Please enter a valid number</div>
+    </div>
+    <input type="text" formControlName="text" placeholder="Enter a string">
+    <div *ngIf="emailForm.get('text')?.invalid && emailForm.get('text')?.errors as textErrors" class="error-messages">
+        <div *ngIf="textErrors['required']" class="error">Text is required</div>
+        <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+    </div>
+
+    <input type="date" formControlName="date" placeholder="Enter a date">
+    <div *ngIf="emailForm.get('date')?.invalid && emailForm.get('date')?.errors as dateErrors" class="error-messages">
+        <div *ngIf="dateErrors['required']" class="error">Date is required</div>
+        <div *ngIf="dateErrors['pastDate']" class="error">Please select a date prior to today</div>
+    </div>
+
+    <button type="submit" [disabled]="emailForm.invalid">Submit</button>
+</form>

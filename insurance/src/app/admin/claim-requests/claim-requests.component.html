@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="mb-4">
+                <h2>Active Claims</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Policy Name</th>
+                            <th>Incident Date</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>User Name</th>
+                            <th>More</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let claim of activeClaims; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ claim.policyName }}</td>
+                            <td>{{ claim.incidentDate }}</td>
+                            <td>{{ claim.type }}</td>
+                            <td>{{ claim.status }}</td>
+                            <td>{{ claim.userName }}</td> <!-- Add this line for User Name -->
+                            <td><a [routerLink]="['/admin/claim-details-data', claim.id]">More</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mb-4">
+                <h2>Pending Claims</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Policy Name</th>
+                            <th>Incident Date</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>User Name</th> <!-- Add this line for User Name -->
+                            <th>More</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let claim of pendingClaims; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ claim.policyName }}</td>
+                            <td>{{ claim.incidentDate }}</td>
+                            <td>{{ claim.type }}</td>
+                            <td>{{ claim.status }}</td>
+                            <td>{{ claim.userName }}</td> <!-- Add this line for User Name -->
+                            <td><a [routerLink]="['/admin/claim-details-data', claim.id]">More</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mb-4">
+                <h2>Rejected Claims</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Policy Name</th>
+                            <th>Incident Date</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>User Name</th> <!-- Add this line for User Name -->
+                            <th>More</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let claim of rejectedClaims; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ claim.policyName }}</td>
+                            <td>{{ claim.incidentDate }}</td>
+                            <td>{{ claim.type }}</td>
+                            <td>{{ claim.status }}</td>
+                            <td>{{ claim.userName }}</td> <!-- Add this line for User Name -->
+                            <td><a [routerLink]="['/claim-details-data', claim.id]">More</a>More</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

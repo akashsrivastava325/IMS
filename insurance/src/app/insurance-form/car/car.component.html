@@ -1,0 +1,436 @@
+<app-navbar />
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" (click)="showForm('vehicle')">Enter Vehicle Data</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="showForm('insurance')">Enter Insurant Data</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="showForm('product')">Enter Product Data</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="showForm('price')">Select Price Option</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="showForm('quote')">Send Quote</a>
+            </li>
+        </ul>
+    </nav>
+    <!--  -->
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="currentForm === 'vehicle'">
+            Vehicle Related Data
+
+            <div class="form-group">
+                <label for="make">Make </label>
+                <select class="form-control" formControlName="make" required>
+                    <option value="">Select a make</option>
+                    <option value="Hero">Hero</option>
+                    <option value="Honda">Honda</option>
+                    <option value="TVS">TVS</option>
+                    <option value="Apache">Apache</option>
+                    <option value="Royal Enfield">Royal Enfield</option>
+                </select>
+            </div>
+            <div *ngIf="myForm.get('make')?.invalid && myForm.get('make')?.errors as textErrors" class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+
+            <div class="form-group">
+                <label for="model"> Model </label>
+                <input type="text" class="form-control" formControlName="model" required>
+            </div>
+            <div *ngIf="myForm.get('model')?.invalid && myForm.get('model')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+
+            <div class="form-group">
+                <label for="cylinderCapacity">Cylinder Capacity [ccm]</label>
+                <input type="number" class="form-control" formControlName="cylinderCapacity" id="cylinderCapacity">
+            </div>
+            <div *ngIf="myForm.get('cylinderCapacity')?.invalid && myForm.get('cylinderCapacity')?.errors as numberErrors"
+                class="error-messages">
+                <div *ngIf="numberErrors['required']" class="error">Field is required</div>
+                <div *ngIf="numberErrors['pattern']" class="error">Please enter a valid number</div>
+            </div>
+
+            <div class="form-group">
+                <label for="kW">Engine Performance [kW]</label>
+                <input type="number" class="form-control" formControlName="kW" id="kW">
+            </div>
+            <div *ngIf="myForm.get('kW')?.invalid && myForm.get('kW')?.errors as numberErrors" class="error-messages">
+                <div *ngIf="numberErrors['required']" class="error">Field is required</div>
+                <div *ngIf="numberErrors['pattern']" class="error">Please enter a valid number</div>
+            </div>
+
+            <!--Make it in past-->
+            <div class="form-group">
+                <label for="dateOfManufacture">Date of Manufacture</label>
+                <input type="date" class="form-control" formControlName="dateOfManufacture" id="dateOfManufacture"
+                    required>
+            </div>
+            <div *ngIf="myForm.get('dateOfManufacture')?.invalid && myForm.get('dateOfManufacture')?.errors as dateErrors"
+                class="error-messages">
+                <div *ngIf="dateErrors['required']" class="error">Date is required</div>
+                <div *ngIf="dateErrors['pastDate']" class="error">Please select a date prior to today</div>
+            </div>
+
+            <div class="form-group">
+                <label for="fuelType">Fuel Type</label>
+                <select class="form-control" formControlName="fuelType" id="fuelType" required>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Electric Power">Electric Power</option>
+                    <option value="Gas">Gas</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div *ngIf="myForm.get('fuelType')?.invalid && myForm.get('fuelType')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+
+            <div class="form-group">
+                <label for="payload">Payload [Kg]</label>
+                <input type="number" class="form-control" formControlName="payload" id="payload">
+            </div>
+            <div *ngIf="myForm.get('payload')?.invalid && myForm.get('payload')?.errors as numberErrors"
+                class="error-messages">
+                <div *ngIf="numberErrors['required']" class="error">Field is required</div>
+                <div *ngIf="numberErrors['pattern']" class="error">Please enter a valid number</div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="totalWeight">Total Weight [Kg]</label>
+                <input type="number" class="form-control" formControlName="totalWeight" id="totalWeight">
+            </div>
+
+            <div *ngIf="myForm.get('totalWeight')?.invalid && myForm.get('totalWeight')?.errors as numberErrors"
+                class="error-messages">
+                <div *ngIf="numberErrors['required']" class="error">Field is required</div>
+                <div *ngIf="numberErrors['pattern']" class="error">Please enter a valid number</div>
+            </div>
+
+            <div class="form-group">
+                <label for="listPrice">Price of Vehicle</label>
+                <input type="number" class="form-control" formControlName="listPrice" id="listPrice" required>
+            </div>
+            <div *ngIf="myForm.get('listPrice')?.invalid && myForm.get('listPrice')?.errors as numberErrors"
+                class="error-messages">
+                <div *ngIf="numberErrors['required']" class="error">Field is required</div>
+                <div *ngIf="numberErrors['pattern']" class="error">Please enter a valid number</div>
+            </div>
+
+            <div class="form-group">
+                <label for="licensePlateNumber">License Plate Number</label>
+                <input type="text" class="form-control" formControlName="licensePlateNumber" id="licensePlateNumber"
+                    required>
+            </div>
+            <div *ngIf="myForm.get('licensePlateNumber')?.invalid && myForm.get('licensePlateNumber')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+
+            <div class="form-group">
+                <label for="annualMileage">Annual Mileage [Km]</label>
+                <input type="number" class="form-control" formControlName="annualMileage" id="annualMileage">
+            </div>
+            <div *ngIf="myForm.get('annualMileage')?.invalid && myForm.get('annualMileage')?.errors as numberErrors"
+                class="error-messages">
+                <div *ngIf="numberErrors['required']" class="error">Field is required</div>
+                <div *ngIf="numberErrors['pattern']" class="error">Please enter a valid number</div>
+            </div>
+
+        </div>
+        <div *ngIf="currentForm === 'insurance'">
+            Add Insurant Data
+
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" formControlName="firstName">
+            </div>
+            <div *ngIf="myForm.get('firstName')?.invalid && myForm.get('firstName')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" formControlName="lastName" id="lastName" required>
+            </div>
+
+            <div *ngIf="myForm.get('lastName')?.invalid && myForm.get('lastName')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth">Date of Birth</label>
+                <input type="date" class="form-control" formControlName="dateOfBirth" id="dateOfBirth" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="form-control" formControlName="gender" id="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Non-Binary">Non-Binary</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div *ngIf="myForm.get('gender')?.invalid && myForm.get('gender')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="streetAddress">Street Address</label>
+                <input type="text" class="form-control" formControlName="streetAddress" id="streetAddress" required>
+            </div>
+            <div *ngIf="myForm.get('streetAddress')?.invalid && myForm.get('streetAddress')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" class="form-control" formControlName="country" id="country" required>
+            </div>
+            <div *ngIf="myForm.get('country')?.invalid && myForm.get('country')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+            <div class="form-group">
+                <label for="zipCode">Zip Code</label>
+                <input type="text" class="form-control" formControlName="zipCode" id="zipCode" required>
+            </div>
+            <div *ngIf="myForm.get('zipCode')?.invalid && myForm.get('zipCode')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" formControlName="city" id="city" required>
+            </div>
+            <div *ngIf="myForm.get('city')?.invalid && myForm.get('city')?.errors as textErrors" class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+            <div class="form-group">
+                <label for="occupation">Occupation</label>
+                <select class="form-control" formControlName="occupation" id="occupation" required>
+                    <option value="Employee">Employee</option>
+                    <option value="Public Official">Public Official</option>
+                    <option value="Farmer">Farmer</option>
+                    <option value="Unemployed">Unemployed</option>
+                    <option value="Self Employed">Self Employed</option>
+                </select>
+            </div>
+            <div *ngIf="myForm.get('occupation')?.invalid && myForm.get('occupation')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="hobbies">Hobbies</label>
+                <select class="form-control" formControlName="hobbies" id="hobbies">
+                    <option value="Speeding">Speeding</option>
+                    <option value="Bungee Jumping">Bungee Jumping</option>
+                    <option value="Cliff Diving">Cliff Diving</option>
+                    <option value="Skydiving">Skydiving</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div *ngIf="myForm.get('hobbies')?.invalid && myForm.get('hobbies')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="website">Website</label>
+                <input type="text" class="form-control" formControlName="website" id="website">
+            </div>
+
+            <div *ngIf="myForm.get('website')?.invalid && myForm.get('website')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+
+            <div class="form-group">
+                <label for="picture">Picture</label>
+                <input type="text" class="form-control" formControlName="picture" id="picture">
+            </div>
+
+        </div>
+        <div *ngIf="currentForm === 'product'">
+            Enter the Product Data
+
+            <div class="form-group">
+                <label for="startDate">Start Date</label>
+                <input type="date" class="form-control" formControlName="startDate">
+            </div>
+
+            <div class="form-group">
+                <label for="insuranceSum">Insurance Sum</label>
+                <select class="form-control" formControlName="insuranceSum" id="insuranceSum">
+                    <option value=300000>3 lakh</option>
+                    <option value=500000>5 lakh</option>
+                    <option value=1000000>10 lakh</option>
+                    <option value=5000000>50 lakh</option>
+                </select>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="meritRating">Merit Rating</label>
+                <select class="form-control" formControlName="meritRating" id="meritRating" required>
+                    <option value="Excellent">Excellent</option>
+                    <option value="Good">Good</option>
+                    <option value="Average">Average</option>
+                    <option value="Below Average">Below Average</option>
+                    <option value="Poor">Poor</option>
+                </select>
+            </div>
+            <div *ngIf="myForm.get('meritRating')?.invalid && myForm.get('meritRating')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+
+            <div class="form-group">
+                <label for="damageInsurance">Damage Insurance</label>
+                <select class="form-control" formControlName="damageInsurance" id="damageInsurance" required>
+                    <option value="No Coverage">No Coverage</option>
+                    <option value="Partial Coverage">Partial Coverage</option>
+                    <option value="Full Coverage">Full Coverage</option>
+                </select>
+            </div>
+            <div *ngIf="myForm.get('damageInsurance')?.invalid && myForm.get('damageInsurance')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+
+            <div class="form-group">
+                <label for="optionalProducts">Optional Products</label>
+                <select class="form-control" formControlName="optionalProducts" id="optionalProducts" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div *ngIf="myForm.get('optionalProducts')?.invalid && myForm.get('optionalProducts')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+
+            <div class="form-group">
+                <label for="courtesyCar">Courtesy Car</label>
+                <select class="form-control" formControlName="courtesyCar" id="courtesyCar" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            <div *ngIf="myForm.get('courtesyCar')?.invalid && myForm.get('courtesyCar')?.errors as textErrors"
+                class="error-messages">
+                <div *ngIf="textErrors['required']" class="error">Field is required</div>
+                <div *ngIf="textErrors['alphaNumeric']" class="error">Please enter alphabetic characters only</div>
+            </div>
+
+            <div class="form-group">
+                <label for="priceSum">Price Sum (INR)</label>
+                <select class="form-control" formControlName="priceSum" id="priceSum">
+                    <option value=5000>Less than ₹5000</option>
+                    <option value=10000>₹5000 - ₹10000</option>
+                    <option value=20000>₹10000 - ₹20000</option>
+                    <option value=21000>Over ₹20000</option>
+                </select>
+            </div>
+
+
+        </div>
+        <div *ngIf="currentForm === 'price'">
+            <div *ngIf="policyList.length > 0">
+                <h2>List of Policies</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Name</th>
+                            <th>Vehicle Type</th>
+                            <th>Base Premium Rate</th>
+                            <th>Premium Amount Per Month</th>
+                            <th>Percentage of Base Premium Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let policy of policyList">
+                            <td>
+                                <input type="radio" name="selectedPolicy" [value]="policy.id"
+                                    (change)="onPolicySelection(policy.id)">
+                            </td>
+                            <td>{{ policy.name }}</td>
+                            <td>{{ policy.vehicleType }}</td>
+                            <td>{{ policy.basePremiumRate }}%</td>
+                            <td>{{ calculatePremiumAmountPerMonth(policy.basePremiumRate) }}</td>
+                            <td>{{ calculatePercentageOfBasePremiumRate(policy.basePremiumRate) }}%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="policyList.length === 0">
+                <p>No policies available.</p>
+            </div>
+        </div>
+
+        <div *ngIf="currentForm === 'quote'">
+            <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input type="email" class="form-control" formControlName="email" id="email" required>
+            </div>
+            <div *ngIf="myForm.get('email')?.invalid && myForm.get('email')?.errors as emailErrors"
+                class="error-messages">
+                <div *ngIf="emailErrors['required']" class="error">Email is required</div>
+                <div *ngIf="emailErrors['email']" class="error">Invalid email format</div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" class="form-control" formControlName="phone" id="phone" required>
+            </div>
+            <div *ngIf="myForm.get('cylinderCapacity')?.invalid && myForm.get('cylinderCapacity')?.errors as numberErrors"
+                class="error-messages">
+                <div *ngIf="numberErrors['required']" class="error">Field is required</div>
+                <div *ngIf="numberErrors['pattern']" class="error">Please enter a valid number</div>
+            </div>
+
+            <div class="form-group">
+                <label for="comments">Comment</label>
+                <textarea class="form-control" formControlName="comments" id="comments" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </div>
+
+    </form>
+
+</div>

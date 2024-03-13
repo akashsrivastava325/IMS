@@ -1,0 +1,27 @@
+/* Custom styles for login form */
+.login-form {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.login-form .form-group {
+  margin-bottom: 15px;
+}
+
+.login-form label {
+  font-weight: bold;
+}
+
+.login-form .toggle-password {
+  cursor: pointer;
+}
+
+@media (max-width: 576px) {
+  .login-form {
+    max-width: none;
+  }
+}

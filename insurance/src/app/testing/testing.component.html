@@ -1,0 +1,19 @@
+<!-- policy.component.html -->
+<h2>Create New Policy</h2>
+<form (ngSubmit)="createPolicy()">
+    <label>Name:</label>
+    <input type="text" [(ngModel)]="newPolicyData.name" name="name" required>
+
+    <label>Vehicle Type:</label>
+    <input type="text" [(ngModel)]="newPolicyData.vehicleType" name="vehicleType" required>
+
+    <label>Base Premium Rate:</label>
+    <input type="number" [(ngModel)]="newPolicyData.basePremiumRate" name="basePremiumRate" required>
+
+    <label>Status:</label>
+    <input type="text" [(ngModel)]="newPolicyData.status" name="status" required>
+
+    <!-- Add other fields as needed -->
+
+    <button type="submit">Create Policy</button>
+</form>

@@ -1,0 +1,25 @@
+<form [formGroup]="claimForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="policyId">Policy Name</label>
+        <select class="form-control" formControlName="policyId">
+            <option *ngFor="let policyName of policyNames" [value]="policyName">{{ policyName }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="incidentDate">Incident Date</label>
+        <input type="date" class="form-control" formControlName="incidentDate">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" formControlName="description">
+    </div>
+    <div class="form-group">
+        <label for="type">Type</label>
+        <input type="text" class="form-control" formControlName="type">
+    </div>
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea class="form-control" formControlName="message"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

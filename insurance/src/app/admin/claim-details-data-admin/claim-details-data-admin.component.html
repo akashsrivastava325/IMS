@@ -1,0 +1,13 @@
+<div>
+    <h2>Claim Details</h2>
+    <p><strong>Policy Name:</strong> {{ claim?.policyName }}</p>
+    <p><strong>Incident Date:</strong> {{ claim?.incidentDate }}</p>
+    <p><strong>Description:</strong> {{ claim?.description }}</p>
+    <p><strong>Type:</strong> {{ claim?.type }}</p>
+    <p><strong>Status:</strong> {{ claim?.status }}</p>
+</div>
+
+<div>
+    <button (click)="approveClaim()" *ngIf="claim?.status === 'Pending'">Approve</button>
+    <button (click)="rejectClaim()" *ngIf="claim?.status === 'Pending'">Reject</button>
+</div>

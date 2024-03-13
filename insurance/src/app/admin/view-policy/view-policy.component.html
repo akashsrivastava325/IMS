@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Vehicle Type</th>
+            <th>Base Premium</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let policy of policies">
+            <td>{{ policy.name }}</td>
+            <td>{{ policy.vehicleType }}</td>
+            <td>{{ policy.basePremiumRate | currency:'USD':'symbol':'1.2-2' }}</td>
+        </tr>
+    </tbody>
+</table>
