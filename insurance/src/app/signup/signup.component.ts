@@ -7,8 +7,13 @@ import { AuthService } from '../shared/auth.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
   registerForm!: FormGroup;
+  passwordHidden: boolean = true;
+  emailInvalid: boolean = false;
+  passwordInvalid: boolean = false;
+  successMessage: string = '';
+  errorMessage: string = ''; // Add this property
 
   constructor(
     private formBuilder: FormBuilder,
@@ -18,7 +23,7 @@ export class SignupComponent {
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, this.passwordValidator()]],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -27,18 +32,42 @@ export class SignupComponent {
 
   register(): void {
     if (this.registerForm.valid) {
-      this.authService.signUp(this.registerForm.value).subscribe(
+      const formData = { ...this.registerForm.value, role: 'user' };
+
+      this.authService.signUp(formData).subscribe(
         (response) => {
-          alert(response.message);
+          this.successMessage = response.message;
+          this.errorMessage = ''; // Clear error message
           console.log('Registration successful', response);
-          // Redirect to login page or display success message
         },
         (error) => {
-          alert(error.message);
-          console.error('Registration failed', error);
-          // Display error message to the user
+          if (error.status === 409) {
+            this.successMessage = ''; // Clear success message
+            this.errorMessage =
+              'User already exists. Please try a different username.'; // Set error message
+            console.error('Registration failed - User already exists', error);
+          } else {
+            this.errorMessage = 'Registration failed. Please try again later.'; // Set error message
+            console.error('Registration failed', error);
+          }
         }
       );
     }
+  }
+
+  togglePasswordVisibility(): void {
+    this.passwordHidden = !this.passwordHidden;
+  }
+
+  passwordValidator() {
+    return (control: any) => {
+      const password = control.value;
+      const hasCapitalLetter = /[A-Z]/.test(password);
+      const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+      const hasNumber = /\d/.test(password);
+      const isValid = hasCapitalLetter && hasSymbol && hasNumber;
+      this.passwordInvalid = !isValid;
+      return isValid ? null : { invalidPassword: true };
+    };
   }
 }

@@ -1,0 +1,12 @@
+.min-vh-100 {
+    min-height: 100vh;
+  }
+  .container{
+    background-image: url("https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-82976.jpg?t=st=1710430366~exp=1710433966~hmac=85f77fa6005cb968bd338a95b5ad2ffc0af5d260d87dd354417db25d41f51786&w=826");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    min-width :100vw;
+    padding: 20px;
+    
+}

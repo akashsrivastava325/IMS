@@ -1,0 +1,15 @@
+.nav-link {
+    cursor: pointer;
+  }
+  
+
+  /* email-validation.component.css */
+
+.error-messages {
+  color: red;
+}
+
+.error {
+  font-size: 0.9em;
+  margin-top: 0.25em;
+}

@@ -1,0 +1,23 @@
+.container{
+    background-image: url("https://media.istockphoto.com/id/1243204032/photo/plane-symbol-formed-by-yellow-neon-light-on-yellow-background.jpg?s=1024x1024&w=is&k=20&c=Mik-2nzDgDtqnGni9nfcBDLbNu5Qe94ij6cRvaORKSI=");
+    height: 100vh;
+    min-width: 100vw;
+    background-size: cover;
+}
+h2{
+    text-align: center;
+    padding: 20px;
+    color: yellow;
+    font-size: 3rem;
+}
+.form-group{
+    margin: 20px;
+    padding: 20px;
+}
+.form-control-lg {
+    font-size: 18px; /* Adjust the font size as needed */
+}
+
+.form-label {
+    font-size: 30px; /* Adjust the font size of labels as needed */
+}

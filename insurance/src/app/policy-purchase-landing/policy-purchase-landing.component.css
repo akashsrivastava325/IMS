@@ -1,19 +1,46 @@
-/* Custom styles for user landing page */
 #user-landing {
-    padding-top: 0; /* No top padding */
-  }
-  
-  .background-image {
-    background-image: url('https://media.istockphoto.com/id/1127838959/photo/family-care-and-love-hands-with-family-symbol-silhouette.jpg?s=1024x1024&w=is&k=20&c=3YI1dCnHd07lzHb7tfL8q-3wazGa3mW2IDIsJYMVby4='); /* Set background image */
-    background-size: cover; /* Cover the entire screen with the background image */
-    background-position: center; /* Center the background image */
-    height: 100vh; /* Set the height to 100% of the viewport height */
-  }
-  
-  #user-landing .btn {
-    font-size: 2rem; /* Increase button font size */
-    border-radius: 50px; /* Make buttons more rounded */
-    min-width: 200px; /* Set a minimum width for buttons */
-    height: 80px; /* Set a fixed height for buttons */
-  }
-  
+  background-color: rgb(238, 214, 185);
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+.btn {
+  padding: 0; /* Remove default padding */
+  position: relative; /* Position buttons relative to the container */
+  width: 80%; /* Set the width to match the image */
+}
+
+.btn-img {
+  width: 100%; /* Make the image cover the entire button */
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+.btn-text {
+  position: absolute;
+  bottom: 10px; /* Adjust as needed */
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 5rem; /* Adjust font size as needed */
+  color: rgb(252, 252, 252); /* Text color */
+}
+
+.btn-small {
+  height: auto; /* Adjust as needed */
+  width: 80%; /* Adjust width as needed */
+  margin-bottom: 15px; /* Adjust as needed */
+}
+
+.btn-list {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.vehicle-btn:hover {
+  box-shadow: 5px 8px 8px rgba(0,0,0,0.5);
+  transform: scale(1.05);
+  transition: 0.5s all ease;
+}

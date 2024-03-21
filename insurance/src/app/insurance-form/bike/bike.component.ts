@@ -16,16 +16,20 @@ import { InsuranceFormService } from '../../shared/insurance-form.service';
 })
 export class BikeComponent implements OnInit {
   myForm!: FormGroup;
+  userId!: number;
   policyList: any[] = [];
   newInsuranceData: any = {};
+  showSuccessMessage: boolean = false;
+  selectedPolicyId: number | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
     public service: PolicyDetailService,
     private insuranceFormService: InsuranceFormService
   ) {
+    this.userId = Number(localStorage.getItem('userId'));
     this.myForm = this.formBuilder.group({
-      userId: [2],
+      userId: [this.userId],
       make: ['', [Validators.required, this.alphaNumericValidator]],
       model: ['', [Validators.required, this.alphaNumericValidator]],
       cylinderCapacity: [
@@ -85,17 +89,42 @@ export class BikeComponent implements OnInit {
         .createInsuranceForm(this.myForm.value)
         .subscribe(
           (response) => {
+            this.showSuccessMessage = true;
+            alert('Form Submitted Successfully!!');
             console.log('Form submitted successfully:', response);
             // You can handle the response here, e.g., show a success message
           },
           (error) => {
+            alert('Check all fields! Something went wrong');
+            console.log(this.myForm.value);
             console.error('Error submitting form:', error);
             // Handle the error, e.g., show an error message
           }
         );
     } else {
+      alert('Check all fields! Something went wrong');
       console.log(this.myForm.errors, 'errrrr');
+      console.log(this.myForm.value);
       console.log('Form is invalid. Please fill in all required fields.');
+    }
+
+    if (this.myForm.valid) {
+      const formDataJson = JSON.stringify(this.myForm.value);
+      this.insuranceFormService.sendEmail(formDataJson).subscribe(
+        (response) => {
+          console.log(formDataJson);
+          this.showSuccessMessage = true;
+          console.log('Email sent successfully:', response);
+        },
+        (error) => {
+          console.log(formDataJson);
+          console.error('Error sending email:', error);
+          // Handle error here
+        }
+      );
+    } else {
+      console.error('Form is invalid');
+      // Handle invalid form here
     }
   }
 
@@ -149,6 +178,7 @@ export class BikeComponent implements OnInit {
   }
 
   onPolicySelection(policyId: number) {
+    this.selectedPolicyId = policyId;
     this.myForm.patchValue({
       policyId: policyId,
     });
@@ -177,9 +207,12 @@ export class BikeComponent implements OnInit {
   submitForm() {
     if (this.myForm.valid) {
       // Form submission logic
+      this.showSuccessMessage = true;
       console.log('Form submitted:', this.myForm.value);
     } else {
       // Handle form validation errors
+      console.log('json', this.myForm.value);
+      alert('Please re-try. Something went wrong!!');
       console.error('Form is invalid');
     }
   }

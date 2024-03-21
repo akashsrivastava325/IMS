@@ -10,20 +10,24 @@ import { InsuranceFormService } from '../../shared/insurance-form.service';
 @Component({
   selector: 'app-scooty',
   templateUrl: './scooty.component.html',
-  styleUrl: './scooty.component.css'
+  styleUrl: './scooty.component.css',
 })
 export class ScootyComponent {
   myForm!: FormGroup;
+  userId!: number;
   policyList: any[] = [];
   newInsuranceData: any = {};
+  showSuccessMessage: boolean = false;
+  selectedPolicyId: number | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
     public service: PolicyDetailService,
     private insuranceFormService: InsuranceFormService
   ) {
+    this.userId = Number(localStorage.getItem('userId'));
     this.myForm = this.formBuilder.group({
-      userId: [2],
+      userId: [this.userId],
       make: ['', [Validators.required, this.alphaNumericValidator]],
       model: ['', [Validators.required, this.alphaNumericValidator]],
       cylinderCapacity: [
@@ -71,7 +75,7 @@ export class ScootyComponent {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       comments: ['', [Validators.required, this.alphaNumericValidator]],
-      vehicleType: ['Car'],
+      vehicleType: ['Scooty'],
       policyId: [''],
       status: ['Pending'],
     });
@@ -83,15 +87,20 @@ export class ScootyComponent {
         .createInsuranceForm(this.myForm.value)
         .subscribe(
           (response) => {
+            this.showSuccessMessage = true;
+            alert('Congratulations Insurance submitted successfully');
             console.log('Form submitted successfully:', response);
             // You can handle the response here, e.g., show a success message
           },
           (error) => {
+            alert('Check all fields! Something went wrong');
+            console.log(this.myForm.value);
             console.error('Error submitting form:', error);
             // Handle the error, e.g., show an error message
           }
         );
     } else {
+      alert('Check all fields! Something went wrong');
       console.log(this.myForm.errors, 'errrrr');
       console.log('Form is invalid. Please fill in all required fields.');
     }
@@ -106,7 +115,7 @@ export class ScootyComponent {
     }
     this.service.getPolicyDetails().subscribe((data) => {
       this.policyList = data.filter(
-        (policy) => policy.vehicleType.toLowerCase() === 'bike'
+        (policy) => policy.vehicleType.toLowerCase() === 'scooty'
       );
     });
   }
@@ -147,6 +156,7 @@ export class ScootyComponent {
   }
 
   onPolicySelection(policyId: number) {
+    this.selectedPolicyId = policyId;
     this.myForm.patchValue({
       policyId: policyId,
     });
@@ -175,9 +185,13 @@ export class ScootyComponent {
   submitForm() {
     if (this.myForm.valid) {
       // Form submission logic
+      this.showSuccessMessage = true;
+
       console.log('Form submitted:', this.myForm.value);
     } else {
       // Handle form validation errors
+      console.log('json', this.myForm.value);
+      alert('Please re-try. Something went wrong!!');
       console.error('Form is invalid');
     }
   }

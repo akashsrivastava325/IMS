@@ -26,7 +26,6 @@ export class UserGuard implements CanActivate {
     const role = localStorage.getItem('role'); // Use AuthService to retrieve role
 
     if (role === 'user') {
-      this.router.navigate(['/user-landing']);
       return true;
     } else {
       if (role === 'admin') this.router.navigate(['/unauthorized']);

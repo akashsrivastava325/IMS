@@ -1,25 +1,40 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" class="form-control" formControlName="username" required>
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <div class="input-group">
-      <input type="password" class="form-control" formControlName="password"
-        [type]="passwordHidden ? 'password' : 'text'" required>
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary toggle-password" type="button" (click)="togglePasswordVisibility()">
-          <span *ngIf="passwordHidden">Show</span>
-          <span *ngIf="!passwordHidden">Hide</span>
-        </button>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3"> <!-- Centering the form -->
+      <div class="login-container">
+        <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+          <div class="form-group">
+            <h1>LOGIN</h1>
+            <label for="username">Username</label>
+            <input type="text" class="form-control" formControlName="username" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-group">
+              <input type="password" class="form-control" formControlName="password"
+                [type]="passwordHidden ? 'password' : 'text'" required>
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary toggle-password" type="button"
+                  (click)="togglePasswordVisibility()">
+                  <span *ngIf="passwordHidden">Show</span>
+                  <span *ngIf="!passwordHidden">Hide</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+          </div>
+          <div class="form-group" *ngIf="!hideRegisterLink">
+            <button type="button" class="btn btn-link btn-sm" (click)="navigateToRegister()">Don't have an
+              account?</button>
+          </div>
+
+          <div *ngIf="showMessage"
+            [ngClass]="{'text-success': message === 'Login successful', 'text-danger': message === 'Incorrect username or password'}">
+            {{ message }}
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary btn-block">Login</button>
-  </div>
-  <div class="form-group">
-    <button type="button" class="btn btn-link btn-sm" (click)="navigateToRegister()">Don't have an account?</button>
-  </div>
-</form>

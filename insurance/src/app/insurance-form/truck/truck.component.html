@@ -1,28 +1,31 @@
-<app-navbar />
+<app-navbar-user-1></app-navbar-user-1>
+<div *ngIf="showSuccessMessage" class="alert alert-success" role="alert">
+    Claim submitted successfully!
+</div>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" (click)="showForm('vehicle')">Enter Vehicle Data</a>
+                <a class="nav-link" (click)="showForm('vehicle')"> <b>Enter Vehicle Data</b></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" (click)="showForm('insurance')">Enter Insurant Data</a>
+                <a class="nav-link" (click)="showForm('insurance')"><b>Enter Insurant Data</b></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" (click)="showForm('product')">Enter Product Data</a>
+                <a class="nav-link" (click)="showForm('product')"><b>Enter Product Data</b></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" (click)="showForm('price')">Select Price Option</a>
+                <a class="nav-link" (click)="showForm('price')"><b>Select Price Option</b></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" (click)="showForm('quote')">Send Quote</a>
+                <a class="nav-link" (click)="showForm('quote')"><b>Send Quote</b></a>
             </li>
         </ul>
     </nav>
     <!--  -->
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div *ngIf="currentForm === 'vehicle'">
-            Vehicle Related Data
+            <h1>Vehicle Related Data</h1>
 
             <div class="form-group">
                 <label for="make">Make </label>
@@ -152,7 +155,7 @@
 
         </div>
         <div *ngIf="currentForm === 'insurance'">
-            Add Insurant Data
+            <h1>Add Insurant Data</h1>
 
             <div class="form-group">
                 <label for="firstName">First Name</label>
@@ -283,7 +286,7 @@
 
         </div>
         <div *ngIf="currentForm === 'product'">
-            Enter the Product Data
+            <h1>Enter the Product Data</h1>
 
             <div class="form-group">
                 <label for="startDate">Start Date</label>
@@ -388,7 +391,7 @@
                         <tr *ngFor="let policy of policyList">
                             <td>
                                 <input type="radio" name="selectedPolicy" [value]="policy.id"
-                                    (change)="onPolicySelection(policy.id)">
+                                    (change)="onPolicySelection(policy.id)" [checked]="selectedPolicyId === policy.id">
                             </td>
                             <td>{{ policy.name }}</td>
                             <td>{{ policy.vehicleType }}</td>
@@ -396,6 +399,7 @@
                             <td>{{ calculatePremiumAmountPerMonth(policy.basePremiumRate) }}</td>
                             <td>{{ calculatePercentageOfBasePremiumRate(policy.basePremiumRate) }}%</td>
                         </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -405,6 +409,7 @@
         </div>
 
         <div *ngIf="currentForm === 'quote'">
+            <h3>Enter Information to Send Quote</h3>
             <div class="form-group">
                 <label for="email">E-Mail</label>
                 <input type="email" class="form-control" formControlName="email" id="email" required>

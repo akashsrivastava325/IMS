@@ -1,16 +1,22 @@
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Vehicle Type</th>
-            <th>Base Premium</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let policy of policies">
-            <td>{{ policy.name }}</td>
-            <td>{{ policy.vehicleType }}</td>
-            <td>{{ policy.basePremiumRate | currency:'USD':'symbol':'1.2-2' }}</td>
-        </tr>
-    </tbody>
-</table>
+<app-navbar-admin-1></app-navbar-admin-1>
+<div class="dad">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-container">
+                    <!-- Loop through policies -->
+                    <div class="custom-card" *ngFor="let policy of policies">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ policy.name }}</h5>
+                                <p class="card-text">Vehicle Type: {{ policy.vehicleType }}</p>
+                                <p class="card-text">Base Premium: {{ policy.basePremiumRate |
+                                    currency:'USD':'symbol':'1.2-2' }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

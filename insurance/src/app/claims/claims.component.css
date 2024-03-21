@@ -44,3 +44,13 @@
     width: 50%; /* Adjust width as needed */
     padding: 20px; /* Add spacing around the form */
   }
+
+  .container{
+    background-image: url("\image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    min-width :100vw;
+    padding: 20px;
+    
+}

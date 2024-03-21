@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { InsuranceForm } from '../models/insurance-form.model';
@@ -56,5 +56,16 @@ export class InsuranceFormService {
   putInsurance(id: number, data: any): Observable<any> {
     console.log(data);
     return this.http.put<any>(`${this.url}/${id}`, data);
+  }
+
+  sendEmail(data: any) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    console.log(data);
+    return this.http.post<any>('https://localhost:7159/api/SendEmail', data, {
+      headers: headers,
+    });
   }
 }

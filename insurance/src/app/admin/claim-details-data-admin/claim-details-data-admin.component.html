@@ -1,13 +1,37 @@
-<div>
-    <h2>Claim Details</h2>
-    <p><strong>Policy Name:</strong> {{ claim?.policyName }}</p>
-    <p><strong>Incident Date:</strong> {{ claim?.incidentDate }}</p>
-    <p><strong>Description:</strong> {{ claim?.description }}</p>
-    <p><strong>Type:</strong> {{ claim?.type }}</p>
-    <p><strong>Status:</strong> {{ claim?.status }}</p>
-</div>
-
-<div>
-    <button (click)="approveClaim()" *ngIf="claim?.status === 'Pending'">Approve</button>
-    <button (click)="rejectClaim()" *ngIf="claim?.status === 'Pending'">Reject</button>
+<app-navbar-admin-1></app-navbar-admin-1>
+<div class="container">
+    <div class="col">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Claim Details</h2>
+                    <div class="mb-3">
+                        <strong>Policy Name:</strong> {{ claim?.policyName }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Incident Date:</strong> {{ claim?.incidentDate }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Description:</strong> {{ claim?.description }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Type:</strong> {{ claim?.type }}
+                    </div>
+                    <div class="mb-3">
+                        <strong>Status:</strong> {{ claim?.status }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <button class="btn btn-success" (click)="approveClaim()"
+                        *ngIf="claim?.status === 'Pending'">Approve</button>
+                    <button class="btn btn-danger ms-2" (click)="rejectClaim()"
+                        *ngIf="claim?.status === 'Pending'">Reject</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

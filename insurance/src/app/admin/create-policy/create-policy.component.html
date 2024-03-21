@@ -1,36 +1,35 @@
+<app-navbar-admin-1></app-navbar-admin-1>
+<div *ngIf="showSuccessMessage" class="alert alert-success" role="alert">
+    Claim submitted successfully!
+</div>
 <div class="container">
     <h2>Create Policy</h2>
     <form [formGroup]="policyForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" formControlName="name" required>
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control form-control-lg" formControlName="name" required>
             <div *ngIf="policyForm.get('name')?.invalid && policyForm.get('name')?.touched" class="text-danger">
                 Name is required
             </div>
         </div>
         <div class="form-group">
-            <label for="vehicleType">Vehicle Type</label>
-            <input type="text" class="form-control" formControlName="vehicleType" required>
+            <label for="vehicleType" class="form-label">Vehicle Type</label>
+            <input type="text" class="form-control form-control-lg" formControlName="vehicleType" required>
             <div *ngIf="policyForm.get('vehicleType')?.invalid && policyForm.get('vehicleType')?.touched"
                 class="text-danger">
                 Vehicle Type is required
             </div>
         </div>
         <div class="form-group">
-            <label for="basePremiumRate">Base Premium Rate</label>
-            <input type="number" class="form-control" formControlName="basePremiumRate" required>
+            <label for="basePremiumRate" class="form-label">Base Premium Rate</label>
+            <input type="number" class="form-control form-control-lg" formControlName="basePremiumRate" required>
             <div *ngIf="policyForm.get('basePremiumRate')?.invalid && policyForm.get('basePremiumRate')?.touched"
                 class="text-danger">
                 Base Premium Rate is required
             </div>
         </div>
-        <div class="form-group">
-            <label for="status">Status</label>
-            <input type="text" class="form-control" formControlName="status" required>
-            <div *ngIf="policyForm.get('status')?.invalid && policyForm.get('status')?.touched" class="text-danger">
-                Status is required
-            </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

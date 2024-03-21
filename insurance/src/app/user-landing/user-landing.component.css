@@ -1,22 +1,21 @@
 /* Custom styles for user landing page */
 #user-landing {
-    padding-top: 0; /* No top padding */
-  }
-  
-  .background-image {
-    background-image: url('https://media.istockphoto.com/id/1127838959/photo/family-care-and-love-hands-with-family-symbol-silhouette.jpg?s=1024x1024&w=is&k=20&c=3YI1dCnHd07lzHb7tfL8q-3wazGa3mW2IDIsJYMVby4='); /* Set background image */
-    background-size: cover; /* Cover the entire screen with the background image */
-    background-position: center; /* Center the background image */
-    height: 100vh; /* Set the height to 100% of the viewport height */
-  }
-  
-  #user-landing img {
-    max-width: 100%; /* Ensure the logo image scales properly */
-  }
-  
-  #user-landing .btn {
-    font-size: 2rem; /* Increase button font size */
-    width: 300px; /* Set a fixed width for the buttons */
-    border-radius: 50px; /* Make buttons more rounded */
-  }
-  
+  padding-top: 0; /* No top padding */
+}
+
+.background-image {
+  background-image: url('https://img.freepik.com/free-photo/medium-shot-happy-man-with-dog_23-2148765201.jpg?t=st=1710501881~exp=1710505481~hmac=bded50a6ccfa47f24ba113fcc88507e5728d197dee51d5bf753d26ed1b21842b&w=740'); /* Set background image */
+  background-size: cover; /* Cover the entire screen with the background image */
+  background-position: center; /* Center the background image */
+  height: 100vh; /* Set the height to 100% of the viewport height */
+}
+
+#user-landing img {
+  max-width: 100%; /* Ensure the logo image scales properly */
+}
+
+#user-landing .btn {
+  font-size: 2rem; /* Increase button font size */
+  width: 300px; /* Set a fixed width for the buttons */
+  border-radius: 50px; /* Make buttons more rounded */
+}

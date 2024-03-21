@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/">PRO Policy</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav me-auto">
+                <a class="nav-link" routerLink="/admin/create-policy">Create Policy</a>
+                <a class="nav-link" routerLink="/admin/insurance-requests">Insurance Requests</a>
+                <a class="nav-link" routerLink="/admin/claim-requests">Claim Requests</a>
+                <a class="nav-link" routerLink="/admin/view-policy">View Policy</a>
+            </div>
+            <div class="navbar-nav">
+                <!-- User's name -->
+                <span class="nav-item nav-link">{{ userName }}</span>
+                <!-- Signout option as a red button -->
+                <button class="btn btn-danger nav-link" (click)="signOut()">Signout</button>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,309 @@
+/* FONTS */
+@import url(./fonts.css);
+
+/* RESET & HELPERS */
+body {
+    font-family: "ClashDisplay", sans-serif;
+    line-height: 1.7;
+    color: #727272;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: 600;
+    color: #212529;
+}
+
+a {
+    text-decoration: none;
+    color: #4e57d4;
+    transition: all 0.5s ease;
+}
+
+a:hover {
+    color: #6970dd;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.section-padding {
+    padding-top: 140px;
+    padding-bottom: 140px;
+}
+
+.theme-shadow {
+    box-shadow: 0px 15px 25px rgba(0,0,0,0.08);
+}
+
+/* IMAGE ZOOM */
+.image-zoom {
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.image-zoom-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.image-zoom-wrapper img{
+     transition: all 0.5s ease; /* Changed var(--transition) to all 0.5s ease */
+}
+
+.image-zoom:hover .image-zoom-wrapper img {
+    transform: scale(1.1);
+}
+
+/* NAVBAR */
+.navbar {
+    box-shadow: 0px 15px 25px rgba(0,0,0,0.08);
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: #212529;
+}
+
+.navbar-nav .nav-link.active {
+    color: #4e57d4;
+}
+
+/* BTN */
+.btn {
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 0;
+    padding: 10px 24px;
+}
+
+.btn-brand {
+    background-color: #4e57d4;
+    border-color: #4e57d4;
+    color: white;
+}
+
+.btn-brand:hover {
+    background-color: #6970dd;
+    border-color: #6970dd;
+    color: white;
+}
+
+/* HERO */
+#hero {
+    background-image: linear-gradient(rgba(78, 87, 212, 0.507), rgba(78, 87, 212, 0.438)), url("https://images.unsplash.com/photo-1496327249223-c84a3c1db090?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-position: center;
+    background-size: cover;
+}
+
+/* Other CSS rules would follow... */
+/* SECTION TITLE */
+.section-title {
+    margin-bottom: 60px;
+}
+
+.section-title .line {
+    width: 60px;
+    height: 4px;
+    background-color: #4e57d4;
+    margin: 16px auto 24px auto;
+}
+
+.section-title p {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* ICONBOX */
+.iconbox {
+    width: 70px;
+    height: 70px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(78, 87, 212, 0.1); /* Used actual RGB values */
+    color: #4e57d4;
+    font-size: 34px;
+    flex: none;
+}
+
+/* SERVICE */
+.service {
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.service::after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background: rgba(78, 87, 212, 0.2); /* Used actual RGB values */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: all 0.5s ease; /* Changed var(--transition) to all 0.5s ease */
+}
+
+
+.service:hover::after {
+    width: 100%;
+    height: 100%;
+    background: #4e57d4; /* Used actual RGB values */
+    z-index: -1;
+}
+
+.service:hover h5,
+.service:hover p {
+    color: white;
+}
+
+.service:hover .iconbox {
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+}
+
+/* COUNTER */
+#counter {
+    background: linear-gradient(rgba(78, 87, 212, 0.8), rgba(78, 87, 212, 0.8)), url("https://media.istockphoto.com/id/1388196431/photo/speedometer.jpg?s=2048x2048&w=is&k=20&c=t3aWGcyAQBrCiBh-_JnLZdbBEfBO05SAo_NaySd2Wwo=");
+    background-position: center;
+    background-size: cover;
+}
+
+/* PORTFOLIO */
+.portfolio-item .iconbox {
+    background-color: #4e57d4;
+    color: white;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.portfolio-item:hover .iconbox {
+    opacity: 1;
+    top: 50%;
+}
+
+/* REVIEW */
+.review small {
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #4e57d4;
+}
+
+.review-head {
+    position: relative;
+}
+
+.review-head::after {
+    content: "";
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    bottom: -14px;
+    background-color: white;
+    transform: rotate(45deg);
+}
+
+/* TEAM */
+.team-member-content {
+    background-color: #4e57d4;
+    position: absolute;
+    bottom: -24px;
+    left: 50%;
+    width: calc(100% - 50px);
+    transform: translateX(-50%);
+    padding: 24px;
+    transition: all 0.5s ease; /* Changed var(--transition) to all 0.5s ease */
+    opacity: 0;
+}
+
+.team-member:hover .team-member-content {
+    opacity: 1;
+    bottom: 24px;
+}
+
+/* CONTACT */
+#contact {
+    position: relative;
+    z-index: 2;
+}
+
+#contact::after {
+    content: "";
+    width: 100%;
+    height: 70%;
+    background: linear-gradient(rgba(78, 87, 212, 0.8), rgba(78, 87, 212, 0.8)), url("https://media.istockphoto.com/id/1388196431/photo/speedometer.jpg?s=2048x2048&w=is&k=20&c=t3aWGcyAQBrCiBh-_JnLZdbBEfBO05SAo_NaySd2Wwo=");
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#contact .form-control {
+    border-radius: 0;
+}
+
+#contact .form-control:focus {
+    box-shadow: none;
+    border-color: #4e57d4;
+}
+
+/* FOOTER */
+footer {
+    padding-top: 120px;
+}
+
+.footer-top {
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-bottom {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+
+footer li,
+footer p,
+footer a {
+    color: rgba(255,255,255,0.7);
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer .line {
+    width: 40px;
+    height: 4px;
+    background-color: #4e57d4;
+    margin-top: 12px;
+    margin-bottom: 24px;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 100px;
+}
+
+.social-icons a:hover {
+    background-color: #4e57d4; /* Used actual RGB values */
+    color: white;
+}

@@ -4,12 +4,12 @@ import { InsuranceFormService } from '../../shared/insurance-form.service';
 @Component({
   selector: 'app-insurance-requests',
   templateUrl: './insurance-requests.component.html',
-  styleUrl: './insurance-requests.component.css',
+  styleUrls: ['./insurance-requests.component.css'],
 })
-export class InsuranceRequestsComponent {
-  approvedInsurance: any[] = [];
-  rejectedInsurance: any[] = [];
-  pendingInsurance: any[] = [];
+export class InsuranceRequestsComponent implements OnInit {
+  insuranceTypes: { title: string; requests: any[] }[] = [];
+  selectedInsuranceType: string = 'Approved'; // Default to Active insurance requests
+  selectedInsuranceRequests: any[] = [];
 
   constructor(private insuranceService: InsuranceFormService) {}
 
@@ -19,15 +19,32 @@ export class InsuranceRequestsComponent {
 
   getInsuranceData(): void {
     this.insuranceService.getInsuranceFormsMore().subscribe((data: any[]) => {
-      this.approvedInsurance = data.filter(
-        (insurance) => insurance.status === 'Active'
-      );
-      this.rejectedInsurance = data.filter(
-        (insurance) => insurance.status === 'Rejected'
-      );
-      this.pendingInsurance = data.filter(
-        (insurance) => insurance.status === 'Pending'
-      );
+      // Group insurance requests by status
+      this.insuranceTypes = [
+        {
+          title: 'Approved',
+          requests: data.filter((insurance) => insurance.status === 'Active'),
+        },
+        {
+          title: 'Rejected',
+          requests: data.filter((insurance) => insurance.status === 'Rejected'),
+        },
+        {
+          title: 'Pending',
+          requests: data.filter((insurance) => insurance.status === 'Pending'),
+        },
+      ];
+
+      // Initially select Active insurance requests
+      this.selectInsuranceType('Approved');
     });
+  }
+
+  selectInsuranceType(insuranceType: string): void {
+    this.selectedInsuranceType = insuranceType;
+    // Find the selected insurance requests based on the selected type
+    this.selectedInsuranceRequests =
+      this.insuranceTypes.find((ins) => ins.title === insuranceType)
+        ?.requests || [];
   }
 }

@@ -1,0 +1,51 @@
+/* Adjust container styles as needed */
+.container {
+    background-image: url("https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    min-width: 100vw;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+/* Add card styles */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.custom-card {
+    width: calc(33.33% - 20px); /* Adjust the width as needed */
+    margin-bottom: 20px; /* Adjust the spacing between cards */
+}
+
+.card {
+    border: 1px solid #ccc; /* Add border to cards */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    transition: transform 0.3s ease; /* Add transition effect for scaling */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Scale up the card on hover */
+}
+.nav-link {
+    color: #333; /* Default color */
+}
+
+.nav-link {
+    color: #fff; /* Set text color to white */
+    cursor: pointer;
+}
+
+.nav-link.active {
+    background-color: #007bff; /* Background color for active link */
+}
+
+.nav-link:hover {
+    color: #ccc; /* Text color for hover */
+}

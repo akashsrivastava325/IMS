@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../shared/auth.service';// Update path as per your project structure
 
-import { NavbarComponent } from './navbar.component';
+@Component({
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
+})
+export class NavbarComponent implements OnInit {
+  userName: string | undefined;
+a: any;
 
-describe('NavbarComponent', () => {
-  let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>;
+  constructor(private authService: AuthService) { }
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [NavbarComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(NavbarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  ngOnInit(): void {
+    this.userName = this.authService.getUserName();
+  }
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+}

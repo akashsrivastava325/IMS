@@ -27,72 +27,97 @@ import { InsuranceDataAdminComponent } from './admin/insurance-data-admin/insura
 import { UserInsuranceDetailComponent } from './user-insurance-detail/user-insurance-detail.component';
 import { UserGuard } from './guards/user-auth.guard';
 import { AdminGuard } from './guards/admin-auth.guard';
-
+import { SucessMessageComponent } from './sucess-message/sucess-message.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { LoginGuard } from './guards/login.guard';
+import { ExpLandingComponent } from './exp-landing/exp-landing.component';
+import { ExpLanding2Component } from './exp-landing2/exp-landing2.component';
 const routes: Routes = [
-  { path: '', component: LandingComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'user-landing', component: UserLandingComponent },
+  { path: '', component: LandingComponent, canActivate: [LoginGuard] },
+  { path: 'signup', component: SignupComponent, canActivate: [LoginGuard] },
+  {
+    path: 'user-landing',
+    component: UserLandingComponent,
+    canActivate: [UserGuard],
+  },
   {
     path: 'policy-purchase-landing',
     component: PolicyPurchaseLandingComponent,
+    canActivate: [UserGuard],
   },
-  { path: 'car', component: CarComponent },
-  { path: 'bike', component: BikeComponent },
-  { path: 'truck', component: TruckComponent },
-  { path: 'scooty', component: ScootyComponent },
-  { path: 'test', component: TestingComponent },
-  { path: 'test-2', component: Testing2Component },
-  { path: 'claim', component: ClaimsComponent },
+  { path: 'car', component: CarComponent, canActivate: [UserGuard] },
+  { path: 'bike', component: BikeComponent, canActivate: [UserGuard] },
+  { path: 'truck', component: TruckComponent, canActivate: [UserGuard] },
+  { path: 'scooty', component: ScootyComponent, canActivate: [UserGuard] },
+  { path: 'test', component: TestingComponent, canActivate: [UserGuard] },
+  { path: 'test-2', component: Testing2Component, canActivate: [UserGuard] },
+  { path: 'claim', component: ClaimsComponent, canActivate: [UserGuard] },
   {
     path: 'claim-details',
     component: ClaimDetailsComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'admin/landing',
     component: LandingPageComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/claim-requests',
     component: ClaimRequestsComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/insurance-requests',
     component: InsuranceRequestsComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/view-policy',
     component: ViewPolicyComponent,
+    canActivate: [AdminGuard],
   },
-  { path: 'test-3', component: Testing3Component },
+  { path: 'test-3', component: Testing3Component, canActivate: [UserGuard] },
   {
     path: 'admin/create-policy',
     component: CreatePolicyComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'claim-details-data/:id',
     component: ClaimDetailsDataComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'user-insurance-detail',
     component: UserInsuranceDetailComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'admin/claim-details-data/:id',
     component: ClaimDetailsDataAdminComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/insurance-details-data/:id',
     component: InsuranceDataAdminComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'insurance-details/:insuranceId',
     component: InsuranceDetailsComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'user-policy-status',
     component: UserPolicyStatusComponent,
+    canActivate: [UserGuard],
   },
-  { path: 'login', component: LoginComponent }, // Add this route
+  { path: 'login', component: LoginComponent, canActivate: [LoginGuard] }, // Add this route
+  { path: 'success', component: SucessMessageComponent },
+  { path: 'unauthorized', component: UnauthorizedComponent },
+  { path: 'exp-landing', component: ExpLandingComponent },
+  { path: 'exp-landing2', component: ExpLanding2Component },
 ];
 
 @NgModule({
@@ -100,6 +125,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-
-// create 3 new component
-// claim-details/:id and admin/insurance-details/:id and admin/claim-details/:id

@@ -1,22 +1,67 @@
-<app-navbar></app-navbar>
-
+<app-navbar-user-1></app-navbar-user-1>
 <div id="user-landing" class="container-fluid">
   <!-- Background image -->
   <div class="background-image">
     <!-- Logo -->
     <div class="row justify-content-center align-items-center h-100">
-      <div class="col-md-6 text-center">
-        <img src="path/to/logo.png" alt="Policy Pro" class="img-fluid">
-      </div>
-      <div class="col-md-6 text-center">
+
+      <div class="col-md-9 text-center">
         <!-- Main options -->
-        <div class="d-flex flex-column align-items-center">
-          <button class="btn btn-primary btn-lg mb-3" routerLink="/policy-purchase-landing">Policy Purchase</button>
-          <button class="btn btn-primary btn-lg mb-3" routerLink="/user-insurance-detail">Policy Status</button>
-          <button class="btn btn-primary btn-lg mb-3" routerLink="/claim-details">Claim Status</button>
-          <button class="btn btn-primary btn-lg mb-3" routerLink="/claim">Make Claim</button>
+        <div class="row justify-content-center">
+          <div class="col-md-3">
+            <a href="/policy-purchase-landing" class="card-link">
+              <div class="card" style="width: 18rem;">
+                <img src="https://img.freepik.com/premium-photo/car-insurance-concept-with-policy_1715-1206.jpg?w=740"
+                  class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Policy Purchase</h5>
+                  <p class="card-text">Click here to purchase a new policy and view form</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href="/user-insurance-detail" class="card-link">
+              <div class="card" style="width: 18rem;">
+                <img
+                  src="https://img.freepik.com/premium-photo/blue-toy-car-standing-insurance-document_151013-19075.jpg?w=740"
+                  class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Policy Status</h5>
+                  <p class="card-text">Click here to check the status of your policy.</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href="/claim-details" class="card-link">
+              <div class="card" style="width: 18rem;">
+                <img
+                  src="https://img.freepik.com/free-photo/businessman-claiming-compensation-insurance-agent_1150-22467.jpg?w=740&t=st=1710501483~exp=1710505083~hmac=34440f02d05c62b98b4ec9c5c778f9f9cb53cc797a78cc38e6b7b15a82cb21c1"
+                  class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Claim Status</h5>
+                  <p class="card-text">Click here to check the status of your claim.</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href="/claim" class="card-link">
+              <div class="card" style="width: 18rem;">
+                <img
+                  src="https://img.freepik.com/premium-photo/car-insurance-concept-car-claim-form-with-car-toy-crash-desk-money-coin-jar-bank-saving-warm-tone-filter_1962-392.jpg?w=740"
+                  class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Make Claim</h5>
+                  <p class="card-text">Click here to make a new claim and view the form</p>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
+      
   </div>
 </div>

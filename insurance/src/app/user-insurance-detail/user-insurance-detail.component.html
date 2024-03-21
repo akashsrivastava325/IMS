@@ -1,89 +1,46 @@
-<div>
-    <h2>Approved Insurance</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>S. No</th>
-                <th>Policy Name</th>
-                <th>Vehicle Type</th>
-                
-                <th>Make</th>
-                <th>Model</th>
-                <th>Status</th>
-                <th>Details</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let insurance of activeInsuranceForms; let i = index">
-                <td>{{ i + 1 }}</td>
-                <td>{{ insurance.policyName }}</td>
-                <td>{{ insurance.vehicleType }}</td>
-                
-                <td>{{ insurance.make }}</td>
-                <td>{{ insurance.model }}</td>
-                <td>{{ insurance.status }}</td>
-                <td><a [routerLink]="['/insurance-details/', insurance.id]">Details</a></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<app-navbar-user-1></app-navbar-user-1>
 
-<div>
-    <h2>Rejected Insurance</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>S. No</th>
-                <th>Policy Name</th>
-                <th>Vehicle Type</th>
-                
-                <th>Make</th>
-                <th>Model</th>
-                <th>Status</th>
-                <th>Details</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let insurance of rejectedInsuranceForms; let i = index">
-                <td>{{ i + 1 }}</td>
-                <td>{{ insurance.policyName }}</td>
-                <td>{{ insurance.vehicleType }}</td>
-                
-                <td>{{ insurance.make }}</td>
-                <td>{{ insurance.model }}</td>
-                <td>{{ insurance.status }}</td>
-                <td><a [routerLink]="['/insurance-details/', insurance.id]">Details</a></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" [class.active]="selectedStatus === 'Active'"
+                    (click)="showStatus('Active')">Active</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [class.active]="selectedStatus === 'Pending'"
+                    (click)="showStatus('Pending')">Pending</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [class.active]="selectedStatus === 'Rejected'"
+                    (click)="showStatus('Rejected')">Rejected</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-<div>
-    <h2>Pending Insurance</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>S. No</th>
-                <th>Policy Name</th>
-                <th>Vehicle Type</th>
-                
-                <th>Make</th>
-                <th>Model</th>
-                <th>Status</th>
-                <th>Details</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let insurance of pendingInsuranceForms; let i = index">
-                <td>{{ i + 1 }}</td>
-                <td>{{ insurance.policyName }}</td>
-                <td>{{ insurance.vehicleType }}</td>
-                
-                <td>{{ insurance.make }}</td>
-                <td>{{ insurance.model }}</td>
-                <td>{{ insurance.status }}</td>
-                <td><a [routerLink]="['/insurance-details/', insurance.id]">Details</a></td>
-            </tr>
-        </tbody>
-    </table>
+
+<div class="dad">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-container">
+                    <!-- Loop through selected insurance forms -->
+                    <div class="custom-card" *ngFor="let insurance of selectedInsuranceForms">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">{{ insurance.policyName }}</h3>
+                                <p class="card-text"><b>Vehicle Type:</b> {{ insurance.vehicleType }}</p>
+                                <p class="card-text"><b>Make:</b> {{ insurance.make }}</p>
+                                <p class="card-text"><b>Model:</b> {{ insurance.model }}</p>
+                                <p class="card-text"><b>Status:</b> {{ insurance.status }}</p>
+                                <a [routerLink]="['/insurance-details/', insurance.id]"
+                                    class="btn btn-primary">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

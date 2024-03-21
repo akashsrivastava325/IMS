@@ -1,27 +1,54 @@
-<form [formGroup]="registerForm" (ngSubmit)="register()" class="register-form">
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" class="form-control" formControlName="username" required>
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" formControlName="password" required>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="firstName">First Name</label>
-      <input type="text" class="form-control" formControlName="firstName" required>
+<div class="container">
+  <form [formGroup]="registerForm" (ngSubmit)="register()" class="register-form">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" formControlName="username" required>
     </div>
-    <div class="form-group col-md-6">
-      <label for="lastName">Last Name</label>
-      <input type="text" class="form-control" formControlName="lastName" required>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <div class="input-group">
+        <input type="password" class="form-control" formControlName="password"
+          [type]="passwordHidden ? 'password' : 'text'" required>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary toggle-password" type="button" (click)="togglePasswordVisibility()">
+            <span *ngIf="passwordHidden">Show</span>
+            <span *ngIf="!passwordHidden">Hide</span>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="passwordInvalid" class="text-danger">
+        Password must contain at least one capital letter, one symbol, and one number.
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" class="form-control" formControlName="email" required>
-  </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary btn-block">Register</button>
-  </div>
-</form>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" formControlName="firstName" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" formControlName="lastName" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" formControlName="email" required>
+      <div *ngIf="emailInvalid" class="text-danger">
+        Please enter a valid email address.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-block">Register</button>
+    </div>
+
+
+    <div *ngIf="successMessage" class="text-success">{{ successMessage }}</div>
+    <!-- Display success message in green -->
+
+    <div *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</div> <!-- Display error message in red -->
+
+  </form>

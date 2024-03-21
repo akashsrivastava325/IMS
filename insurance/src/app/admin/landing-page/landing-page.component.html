@@ -1,37 +1,50 @@
-<!-- user-landing.component.html -->
-<app-navbar />
-<div id="user-landing">
-
+<app-navbar-admin-1></app-navbar-admin-1>
+<div id="user-landing" class="bg-image">
     <!-- Logo -->
-    <div class="container">
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-6">
-                <img src="path/to/logo.png" alt="Policy Pro" class="img-fluid">
-            </div>
-        </div>
-    </div>
 
-    <!-- Main options -->
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <button class="btn btn-primary w-100" routerLink="/admin/create-policy">Create Policy</button>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <button class="btn btn-primary w-100" routerLink="/admin/view-policy">View All Policy</button>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <button class="btn btn-primary w-100" routerLink="/admin/insurance-requests">View All Insurance
-                            Requests</button>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <button class="btn btn-primary w-100" routerLink="/admin/claim-requests">View All Claim
-                            Requests</button>
-                    </div>
+    <div class="container">
+        <a href="/admin/create-policy" class="card-link">
+            <div class="card mb-3" style="width: 18rem;">
+                <img src="https://img.freepik.com/free-photo/online-car-insurance-application_53876-167062.jpg?w=740&t=st=1710498315~exp=1710498915~hmac=88701ae25459f861049c496495c2e290eeca435bab80bb2505e2054d1f8caa51"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Create Policy</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.This is the button to create policy</p>
                 </div>
             </div>
-        </div>
+        </a>
+        <a href="/admin/view-policy" class="card-link">
+            <div class="card mb-3" style="width: 18rem;">
+                <img src="https://img.freepik.com/free-vector/people-with-icons-related-car-insurance_53876-43023.jpg?t=st=1710500584~exp=1710504184~hmac=3fe7dafb8ff23bb9f697a5d64369b98b71a898c144c79e5c4b895649f80bade6&w=740"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">View all policies</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+        </a>
+        <a href="/admin/insurance-requests" class="card-link">
+            <div class="card mb-3" style="width: 18rem;">
+                <img src="https://img.freepik.com/free-photo/are-you-covered-healthcare-insurance-protection-concept_53876-122704.jpg?t=st=1710500364~exp=1710503964~hmac=ad5494c6336ee5c2fab991a2403554fcd4cb2cfb30a4bc6496317b4e54e79e13&w=740"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Insurance Requests</h5>
+                    <p class="card-text">To view all claims. Click here to view all the claims and you can see a list of
+                        all claims available on this website</p>
+                </div>
+            </div>
+        </a>
+        <a href="/admin/claim-requests" class="card-link">
+            <div class="card mb-3" style="width: 18rem;">
+                <img src="https://img.freepik.com/free-photo/businessman-checking-documents-table_1262-2231.jpg?t=st=1710500208~exp=1710503808~hmac=fab0979bf5024613856d6f4ba952b592abe1da1a73bec4d0f1a5c8bee2125c34&w=740"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Claim Requests</h5>
+                    <p class="card-text">Some quick example text to build on the card title. claims approval or
+                        rejection. click here on this card some quick example</p>
+                </div>
+            </div>
+        </a>
     </div>
-</div>

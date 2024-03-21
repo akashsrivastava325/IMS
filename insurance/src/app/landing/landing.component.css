@@ -11,3 +11,7 @@
     padding: 20px;
   }
   
+  .carousel-btrp {
+    margin: 0 auto;
+    overflow: hidden;
+  }

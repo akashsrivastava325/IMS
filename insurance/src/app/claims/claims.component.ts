@@ -9,10 +9,11 @@ import { PolicyDetailService } from '../shared/policy-detail.service';
   styleUrl: './claims.component.css',
 })
 export class ClaimsComponent {
+  showSuccessMessage = false;
   claimForm!: FormGroup;
   policyNames: string[] = [];
   policyIdMapping: { [name: string]: number } = {};
-  userId: number = 1;
+  userId!: number;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,6 +48,7 @@ export class ClaimsComponent {
   }
 
   ngOnInit(): void {
+    this.userId = Number(localStorage.getItem('userId'));
     this.claimForm = this.formBuilder.group({
       policyId: [null, Validators.required],
       incidentDate: ['', Validators.required],
@@ -73,6 +75,7 @@ export class ClaimsComponent {
     this.claimService.postClaim(formValue).subscribe(
       (response) => {
         // Handle success response
+        this.showSuccessMessage = true;
         console.log('Claim submitted successfully:', response);
       },
       (error) => {

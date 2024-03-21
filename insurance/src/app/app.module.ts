@@ -35,6 +35,19 @@ import { ClaimDetailsDataComponent } from './claim-details-data/claim-details-da
 import { ClaimDetailsDataAdminComponent } from './admin/claim-details-data-admin/claim-details-data-admin.component';
 import { InsuranceDataAdminComponent } from './admin/insurance-data-admin/insurance-data-admin.component';
 import { UserInsuranceDetailComponent } from './user-insurance-detail/user-insurance-detail.component';
+import { NavBar2Component } from './nav-bar-2/nav-bar-2.component';
+import { SucessMessageComponent } from './sucess-message/sucess-message.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { NavbarUser1Component } from './navbar-user-1/navbar-user-1.component';
+import { NavbarAdmin1Component } from './navbar-admin-1/navbar-admin-1.component';
+import { ExpLandingComponent } from './exp-landing/exp-landing.component';
+import { NgsRevealModule } from 'ngx-scrollreveal';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { register } from 'swiper/element/bundle';
+import { ExpLanding2Component } from './exp-landing2/exp-landing2.component';
+// register Swiper custom elements
+register();
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +77,13 @@ import { UserInsuranceDetailComponent } from './user-insurance-detail/user-insur
     ClaimDetailsDataAdminComponent,
     InsuranceDataAdminComponent,
     UserInsuranceDetailComponent,
+    NavBar2Component,
+    SucessMessageComponent,
+    UnauthorizedComponent,
+    NavbarUser1Component,
+    NavbarAdmin1Component,
+    ExpLandingComponent,
+    ExpLanding2Component,
   ],
   imports: [
     BrowserModule,
@@ -72,6 +92,8 @@ import { UserInsuranceDetailComponent } from './user-insurance-detail/user-insur
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    BrowserModule,
+    NgxSliderModule,
     ToastrModule.forRoot(),
   ],
   providers: [UserDataAccess],

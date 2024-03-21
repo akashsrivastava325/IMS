@@ -1,0 +1,71 @@
+/* Add this to your global styles or component-specific styles */
+.bg-image {
+    position: relative;
+    background-image: url('https://img.freepik.com/premium-photo/car-insurance-concept-with-policy_1715-1203.jpg?w=740');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    padding: 50px 0; /* Adjust top and bottom padding as needed */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Adjust transparency and color as needed */
+}
+  
+  #user-landing .btn {
+    font-size: 1.5rem; 
+    margin: 50px;
+  }
+  
+  #user-landing .row.justify-content-center {
+    align-items: center;
+  }
+  
+  .dashboard-button {
+    height: 100px;
+  }
+  .dashboard-button-wrapper {
+    margin-bottom: 150px;
+  }
+  .card {
+    margin-right: 20px; /* Adjust the value as needed */
+    margin-bottom: 10px; /* Adjust the value as needed */
+    transition: transform 0.3s ease; /* Add transition for smooth hover effect */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Move the card up slightly on hover */
+}
+
+.card:last-child {
+    margin-right: 0;
+}
+.container{
+  display: flex;
+  justify-content: center;
+}
+.card-link{
+  margin-right: 20px
+  ;
+}
+
+.navbar {
+    background-color: white; /* Set background color to white */
+}
+
+.nav-link {
+    color: #fff; /* Set text color to white */
+}
+
+.nav-link.active {
+    background-color: #007bff; /* Background color for active link */
+}
+
+.nav-link:hover {
+    color: #ccc; /* Text color for hover */
+}

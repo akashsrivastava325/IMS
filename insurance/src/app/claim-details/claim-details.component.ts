@@ -1,34 +1,46 @@
+// app-claim-details.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { ClaimService } from '../shared/claim.service';
-import { PolicyDetailService } from '../shared/policy-detail.service';
-import { forkJoin } from 'rxjs';
+
+interface ClaimGroup {
+  title: string;
+  claims: any[]; // Adjust the type as per your data structure
+}
 
 @Component({
   selector: 'app-claim-details',
   templateUrl: './claim-details.component.html',
-  styleUrls: ['./claim-details.component.css'], // Fixing styleUrl to styleUrls
+  styleUrls: ['./claim-details.component.css'],
 })
 export class ClaimDetailsComponent implements OnInit {
-  userId: number = 1; // Manually setting userId for now
-  activeClaims: any[] = [];
-  pendingClaims: any[] = [];
-  rejectedClaims: any[] = [];
+  claimGroups: ClaimGroup[] = [];
+  selectedClaimGroup!: ClaimGroup;
 
   constructor(private claimService: ClaimService) {}
 
   ngOnInit(): void {
     this.claimService.getClaimsWithPolicyNames().subscribe((data: any[]) => {
-      // Categorize claims based on status
-      console.log(JSON.stringify(data, null, 2));
-      this.activeClaims = data.filter(
-        (claim) => claim.status === 'Active' && claim.userId === this.userId
-      );
-      this.pendingClaims = data.filter(
-        (claim) => claim.status === 'Pending' && claim.userId === this.userId
-      );
-      this.rejectedClaims = data.filter(
-        (claim) => claim.status === 'Rejected' && claim.userId === this.userId
-      );
+      // Initialize claimGroups with an empty array for claims
+      this.claimGroups = [
+        { title: 'Active Claims', claims: [] },
+        { title: 'Pending Claims', claims: [] },
+        { title: 'Rejected Claims', claims: [] },
+      ];
+
+      // Now populate the claims for each group
+      this.claimGroups.forEach((group) => {
+        group.claims = data.filter(
+          (claim) => claim.status === group.title.split(' ')[0]
+        );
+      });
+
+      // By default, display Active Claims
+      this.selectClaimGroup(this.claimGroups[0]); // Ensure the initial selection
     });
+  }
+
+  selectClaimGroup(claimGroup: ClaimGroup): void {
+    this.selectedClaimGroup = claimGroup; // Update selectedClaimGroup with the clicked claimGroup
   }
 }

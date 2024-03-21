@@ -1,8 +1,19 @@
 /* Custom styles for login form */
+.container{
+  justify-content: center;
+  background-image:url("https://media.istockphoto.com/id/1444897624/photo/concept-of-car-insurance-business-saving-buy-sale-with-tax-and-loan-for-new-car-car-toy.jpg?s=1024x1024&w=is&k=20&c=bZdyvL1gPzqnCpalaF8vriWqtH42s4yX-_8J41z1zFs=");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  min-width:100vw;
+}
+h1{
+  text-align: center;
+}
 .login-form {
   max-width: 400px;
   margin: auto;
-  padding: 20px;
+  padding: 30px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f9f9f9;
@@ -24,4 +35,20 @@
   .login-form {
     max-width: none;
   }
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Adjust the height as needed */
+}
+
+.login-form {
+  width: 400px; /* Adjust the width as needed */
+  padding: 50px; /* Add padding for better spacing */
+  background-color: #f9f9f9; /* Add background color */
+  border: 1px solid #ccc; /* Add border */
+  border-radius: 5px; /* Add border radius */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
 }
